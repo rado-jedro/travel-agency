@@ -13,7 +13,7 @@ class TripListOptions extends React.Component {
     } else {
       console.log('Removing tag', tag);
       // TODO - use action dispatcher from props
-      this.props.removeTag();
+      this.props.removeTag(tag);
     }
   }
 

@@ -17,6 +17,8 @@ export const getFilteredTrips = ({trips, filters}) => {
   output = output.filter(trip => (trip.tags !== filters.tags));
   // TODO - sort by cost descending (most expensive goes first)
 
+  //output = output.filter(trip => trip.cost).sort();
+  output = output.reverse(output.filter(trip => trip.cost));
   return output;
 };
 

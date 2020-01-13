@@ -21,13 +21,14 @@ export const getFilteredTrips = ({trips, filters}) => {
     );
   }
 
-
-  output = output.filter(trip => (trip.tags !== filters.tags));
+  //output = output.filter(trip => (trip.tags !== filters.tags));
   // TODO - sort by cost descending (most expensive goes first)
-  console.log(output);
-  output = output.sort(trips.cost);
-  console.log(output[0].cost);
-  return output;
+
+  output.sort(
+    (a, b) => parseFloat(a.cost.slice(1)) - parseFloat(b.cost.slice(1)),
+  );
+
+  return output.reverse();
 };
 
 export const getTripById = ({trips}, tripId) => {

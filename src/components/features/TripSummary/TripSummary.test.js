@@ -26,7 +26,6 @@ describe('Component TripSummary', () => {
     const expectedCost = '$1000';
     const expectedDays = 14;
 
-
     const component = shallow(<TripSummary name={expectedName} cost={expectedCost} days={expectedDays} />);
 
     expect(component.find('.title').text()).toEqual(expectedName);
@@ -37,7 +36,25 @@ describe('Component TripSummary', () => {
 
   });
 
-  it('should generate an error if required props are missing', () => {
+  it('should throw error without required props', () => {
     expect(() => shallow(<TripSummary />)).toThrow();
   });
+
+  it('should render tags array corectlly', () => {
+    const expectedTags = ['one', 'two', 'three'];
+    const component = shallow(<TripSummary tags={expectedTags} />);
+
+    expect(component.find('.tags span').at(0).text()).toEqual(expectedTags[0]);
+    expect(component.find('.tags span').at(1).text()).toEqual(expectedTags[1]);
+    expect(component.find('.tags span').at(2).text()).toEqual(expectedTags[2]);
+
+  });
+
+  it('should render tags div if tags is truthy ', () => {
+    const expectedTags = [];
+    const component = shallow(<TripSummary tags={expectedTags} />);
+
+    expect(component.find('.tags')).toBeTruthy();
+  });
+
 });

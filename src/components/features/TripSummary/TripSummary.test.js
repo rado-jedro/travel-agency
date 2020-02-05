@@ -6,16 +6,17 @@ import TripSummary from './TripSummary';
 describe('Component TripSummary', () => {
   it ('should render correct link', () => {
     const expectedLink = 'abc';
-    const component = shallow(<TripSummary id={expectedLink} />);
+    const component = shallow(<TripSummary id={expectedLink} name='name' cost = 'cost' w/>);
 
     expect(component.find('.link').prop('to')).toEqual(`/trip/${expectedLink}`);
   });
 
   it('have to check if <img> has got valid src and alt', () => {
-    const expectedSrc = 'imageSrc';
+    const expectedSrc = 'image';
     const expectedAlt = 'imageName';
+
     const component = shallow(
-      <TripSummary src={expectedSrc} alt={expectedAlt} />);
+      <TripSummary image={expectedSrc} name={expectedAlt} id='id' cost = 'cost' />);
 
     expect(component.find('img').prop('src')).toEqual(expectedSrc);
     expect(component.find('img').prop('alt')).toEqual(expectedAlt);
@@ -26,7 +27,7 @@ describe('Component TripSummary', () => {
     const expectedCost = '$1000';
     const expectedDays = 14;
 
-    const component = shallow(<TripSummary name={expectedName} cost={expectedCost} days={expectedDays} />);
+    const component = shallow(<TripSummary name={expectedName} cost={expectedCost} days={expectedDays} id ='id' />);
 
     expect(component.find('.title').text()).toEqual(expectedName);
 
@@ -42,7 +43,7 @@ describe('Component TripSummary', () => {
 
   it('should render tags array corectlly', () => {
     const expectedTags = ['one', 'two', 'three'];
-    const component = shallow(<TripSummary tags={expectedTags} />);
+    const component = shallow(<TripSummary tags={expectedTags} name= 'name' cost = 'cost' id ='id'/>);
 
     expect(component.find('.tags span').at(0).text()).toEqual(expectedTags[0]);
     expect(component.find('.tags span').at(1).text()).toEqual(expectedTags[1]);
@@ -52,7 +53,7 @@ describe('Component TripSummary', () => {
 
   it('should render tags div if tags is truthy ', () => {
     const expectedTags = [];
-    const component = shallow(<TripSummary tags={expectedTags} />);
+    const component = shallow(<TripSummary tags={expectedTags} cost = 'cost' name='name' id='id'/>);
 
     expect(component.find('.tags')).toBeTruthy();
   });

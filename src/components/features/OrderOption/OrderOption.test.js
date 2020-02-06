@@ -120,7 +120,7 @@ describe('Component OrderOption', () => {
           /* tests for icons */
           it('should render div with class icon', () => {
             const div = renderedSubcomponent.find('.icon .icon');
-            expect(div).length.toBe(3);
+            expect(div).toHaveLength(3);
           });
           it('should run setOrderOption function on click', () => {
             renderedSubcomponent

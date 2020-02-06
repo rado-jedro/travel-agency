@@ -183,7 +183,7 @@ describe('Component OrderOption', () => {
           /* tests for checkboxes */
           it('render input with type checkbox', () => {
             const input = renderedSubcomponent.find('input');
-            expect(input).toHaveLength(3);
+            expect(input.at(0).prop('type')).toBe('checkbox');
           });
   
           it('should run setOrderOption function on change', () => {

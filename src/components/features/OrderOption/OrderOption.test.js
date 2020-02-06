@@ -179,6 +179,25 @@ describe('Component OrderOption', () => {
 
           break;
         }
+        case 'checkboxes': {
+          /* tests for checkboxes */
+          it('render input with type checkbox', () => {
+            const input = renderedSubcomponent.find('input');
+            expect(input).toHaveLength(3);
+          });
+  
+          it('should run setOrderOption function on change', () => {
+            renderedSubcomponent
+              .find(`[value="${testValue}"]`)
+              .simulate('change', { currentTarget: { checked: true } });
+            expect(mockSetOrderOption).toBeCalledTimes(1);
+            expect(mockSetOrderOption).toBeCalledWith({
+              [mockProps.id]: [mockProps.currentValue, testValue],
+            });
+          });
+  
+          break;
+        }
       }
     });
   }

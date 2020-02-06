@@ -132,7 +132,7 @@ describe('Component OrderOption', () => {
 
           break;
         }
-        
+
         case 'number': {
           /* tests for number */
           it('should render div with className number', () => {
@@ -151,6 +151,23 @@ describe('Component OrderOption', () => {
           });
 
           break;
+        }
+
+        case 'text': {
+          /* tests for text */
+          it('should render input with text', () => {
+            const input = renderedSubcomponent.find('input');
+            expect(input.length).toBe(1);
+          });
+          it('should run setOrderOption function on change', () => {
+            renderedSubcomponent
+              .find('input')
+              .simulate('change', { currentTarget: { value: testValue } });
+            expect(mockSetOrderOption).toBeCalledTimes(1);
+            expect(mockSetOrderOption).toBeCalledWith({
+              [mockProps.id]: testValue,
+            });
+          });
         }
       }
     });

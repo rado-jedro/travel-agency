@@ -55,7 +55,7 @@ describe('Component OrderOption', () => {
   };
 
   const testValue = mockProps.values[1].id;
-  //const testValueNumber = 3;
+  const testValueNumber = 3;
 
   for(let type in optionTypes){
     describe(`Component OrderOption with type=${type}`, () => {
@@ -128,6 +128,26 @@ describe('Component OrderOption', () => {
               .at(1)
               .simulate('click');
             expect(mockSetOrderOption).toBeCalledTimes(1);
+          });
+
+          break;
+        }
+        
+        case 'number': {
+          /* tests for number */
+          it('should render div with className number', () => {
+            const div = renderedSubcomponent.find('.number');
+            expect(div.length).toBe(1);
+          });
+
+          it('should run setOrderOption function on change', () => {
+            renderedSubcomponent
+              .find('input')
+              .simulate('change', { currentTarget: { value: testValueNumber } });
+            expect(mockSetOrderOption).toBeCalledTimes(1);
+            expect(mockSetOrderOption).toBeCalledWith({
+              [mockProps.id]: testValueNumber,
+            });
           });
 
           break;

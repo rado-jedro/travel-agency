@@ -80,13 +80,6 @@ describe('Component OrderOption', () => {
         renderedSubcomponent = subcomponent.dive();
       });
 
-      /* dummy test */
-      it('passes dummy test', () => {
-        expect(1).toBe(1);
-      //console.log(component.debug());
-      // console.log(subcomponent.debug());
-      });
-
       /* common tests */
       it(`renders ${optionTypes[type]}`, () => {
         expect(subcomponent).toBeTruthy();

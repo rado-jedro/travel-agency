@@ -54,7 +54,7 @@ const OrderForm = props => (
     <Col xs={12}>
       <OrderSummary tripCost={props.tripCost} options={props.options}/>
     </Col>
-    <Button onClick={() => sendOrder(props.options, props.tripCost, props.tripName, props.tripId, props.countryCode)}>Order now!</Button>
+    <Button onClick={() => sendOrder(props.options, props.tripCost, props.tripName, props.tripId, props.countryCode)} disabled={props.options.name == '' || props.options.contact == ''} >Order now!</Button>
   </Row>
 );
 

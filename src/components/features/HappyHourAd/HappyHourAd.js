@@ -7,9 +7,10 @@ class HappyHourAd extends React.Component {
     super();
     setInterval(() => this.forceUpdate(), 1000); // run this.forceUpdate() every second
   }
-  
+
   static propTypes = {
     title: PropTypes.node,
+    promoDescription: PropTypes.node,
   };
 
   getCountdownTime() {
@@ -35,10 +36,13 @@ class HappyHourAd extends React.Component {
 
 
   render() {
+    const promoCounter = this.getCountdownTime();
     return <div className={styles.component}>
       <div className={styles.component}>
         <h3 className={styles.title}>{this.props.title}</h3>
-        <div className={styles.countdown}>{this.getCountdownTime()}</div>
+        <div className={styles.countdown}>
+          {promoCounter > 82800 ? this.props.promoDescription : promoCounter}
+        </div>
       </div>
     </div>;
   }

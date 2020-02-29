@@ -13,6 +13,13 @@ class HappyHourAd extends React.Component {
     promoDescription: PropTypes.node,
   };
 
+  mockProps = {
+    title: 'Happy Hour',
+    promoDescription:
+      'Promo time',
+  };
+
+
   getCountdownTime() {
     const currentTime = new Date();
     const nextNoon = new Date(
@@ -39,9 +46,9 @@ class HappyHourAd extends React.Component {
     const promoCounter = this.getCountdownTime();
     return <div className={styles.component}>
       <div className={styles.component}>
-        <h3 className={styles.title}>{this.props.title}</h3>
+        <h3 className={styles.title}>{this.mockProps.title}</h3>
         <div className={styles.countdown}>
-          {promoCounter > 82800 ? this.props.promoDescription : promoCounter}
+          {promoCounter > 82800 ? this.mockProps.promoDescription : promoCounter}
         </div>
       </div>
     </div>;

@@ -6,7 +6,7 @@ class HappyHourAd extends React.Component {
     return <div className={styles.component}>
       <div className={styles.component}>
         <h3 className={styles.title}></h3>
-        <div className={styles.promoDescription}></div>
+        <div className={styles.countdown}></div>
       </div>
     </div>;
   }

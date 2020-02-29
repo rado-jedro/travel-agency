@@ -4,7 +4,7 @@ import HappyHourAd from './HappyHourAd';
 
 const select = {
   title: '.title',
-  promoDescription: '.promoDescription',
+  countdown: '.countdown',
 };
 
 describe('Component HappyHourAd', () => {
@@ -16,7 +16,7 @@ describe('Component HappyHourAd', () => {
   it('should render heading and description', () => {
     const component = shallow(<HappyHourAd />);
     expect(component.exists(select.title)).toEqual(true);
-    expect(component.exists(select.promoDescription)).toEqual(true);
+    expect(component.exists(select.countdown)).toEqual(true);
   });
 
 });

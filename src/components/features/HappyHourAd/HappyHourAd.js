@@ -6,9 +6,16 @@ import { formatTime } from '../../../utils/formatTime';
 class HappyHourAd extends React.Component {
   constructor() {
     super();
-    setInterval(() => this.forceUpdate(), 1000); // run this.forceUpdate() every second
   }
 
+  componentDidMount(){
+    this.timerID = setInterval(() =>
+      this.forceUpdate(), 1000);
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.timerID);
+  }
   static propTypes = {
     title: PropTypes.node,
     promoDescription: PropTypes.node,
